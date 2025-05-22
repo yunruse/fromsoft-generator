@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+
+discord.keys
+agmena.ttf
+*.png
