@@ -37,8 +37,11 @@ class FromsoftGenerator(Client):
         self,
         ctx: Interaction,
         text: str,
-        hidden: bool=False
+        hidden: bool=False,
+        all_caps: bool=True,
     ):
+        if all_caps:
+            text = text.upper()
         img = elden_ring(text)
         with BytesIO() as buffer:
             img.save(buffer, 'PNG')
