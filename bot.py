@@ -6,7 +6,7 @@ from discord import Client, Intents
 from discord import Interaction
 from discord import app_commands, File
 
-from fromsoft import elden_ring
+from fromsoft import elden_ring, GRADIENTS
 
 CLIENT_KEY = Path('discord.keys').read_text().strip()
 
@@ -32,17 +32,20 @@ class FromsoftGenerator(Client):
     @app_commands.describe(
         text="The text to render",
         hidden="Whisper the response so nobody else sees it.",
+        color="The colour as a hex code, or one of " + ', '.join(GRADIENTS.keys()),
+        all_caps="Automatically capitalise all text?",
     )
     async def fromsoft(
         self,
         ctx: Interaction,
         text: str,
-        hidden: bool=False,
-        all_caps: bool=True,
+        color: str = '#ffd042',
+        hidden: bool = False,
+        all_caps: bool = True,
     ):
         if all_caps:
             text = text.upper()
-        img = elden_ring(text)
+        img = elden_ring(text, GRADIENTS.get(color, color))
         with BytesIO() as buffer:
             img.save(buffer, 'PNG')
             buffer.seek(0)
