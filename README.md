@@ -1,3 +1,5 @@
+!["text generated" in the transgender gradient in Elden Ring message style.](example.png)
+
 # fromsoft-generator
 
 A simple generator to let you generate Elden Ring-style **NOUN VERBED** text. Includes:
