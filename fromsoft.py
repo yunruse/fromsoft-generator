@@ -16,7 +16,8 @@ GRADIENTS = {
     "lesbian": Gradient.from_hex("f20 f64 fa8 fff f8f f4c f08".split()),
     "nb":      Gradient.from_hex("ff2 fff 84d 333".split()),
     "pan":     Gradient.from_hex("f2c f2c ff2 ff2 2cf 2cf".split()),
-    "men":     Gradient.from_hex("2a6 6ea 8fc fff 88f 44c 22a".split()),
+    "mlm":     Gradient.from_hex("2a6 6ea 8fc fff 88f 44c 22a".split()),
+    "ace":     Gradient.from_hex("000 aaa fff 808".split())
 }
 
 def centre_text(
