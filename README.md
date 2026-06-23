@@ -2,14 +2,19 @@
 
 # fromsoft-generator
 
-A simple generator to let you generate Elden Ring-style **NOUN VERBED** text. Includes:
+A simple generator to let you generate Elden Ring-style **NOUN VERBED** text.
 
-- `gradient.py`, for generating linear gradients in PIL
-- `fromsoft.py`, for generating **NOUN VERBED**-style text
-- `bot.py`, a Discord bot for `/fromsoft NOUN VERBED`
+## Use
 
-## Bot usage
+- Grab a copy of the **Agmena Pro Regular** font and place it as `agmena.ttf`
+- Install as `uv sync`
+- Run as `uv run fromsoft [--color COLOR] [text ...]`.
 
-1. Download a copy of the Agmena Pro Regular font and place it as `agmena.ttf`.
-2. Install Python 3.9 and `pip install discordpy pillow`.
-3. [Set up a Discord bot](https://discord.com/developers/applications) and put the keys in the file `discord.keys`.
+`COLOR` can be a hex color, a named gradient, or a custom gradient (space-separated hex).
+
+## Discord bot
+
+For a Discord bot with a similar interface to the CLI:
+
+- [Set up a Discord bot](https://discord.com/developers/applications) and put the keys in the file `discord.keys`
+- Run as `uv run bot`

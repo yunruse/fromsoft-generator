@@ -1,0 +1,17 @@
+[project]
+name = "fromsoft-generator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["discord-py>=2.7.1", "pillow>=12.2.0"]
+
+[dependency-groups]
+dev = ["black>=26.5.1"]
+
+[tool.uv]
+package = true
+
+[project.scripts]
+fromsoft = "fromsoft.__main__:main"
+bot = "fromsoft.bot:main"
