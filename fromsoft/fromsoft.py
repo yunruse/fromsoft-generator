@@ -45,7 +45,11 @@ def centre_text(
 
 
 def generate(text: str, col: str | Gradient) -> Image.Image:
-    img = Image.new("RGBA", IMG_SIZE, TRANSPARENT)
+    w, h = IMG_SIZE
+    text_width = FONT_L.getbbox(text)[2]
+    w = max(w, int(text_width) + 20)
+
+    img = Image.new("RGBA", (w, h), TRANSPARENT)
 
     if isinstance(col, str) and " " in col:
         col = Gradient.from_hex(col.split())
