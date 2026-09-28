@@ -29,6 +29,7 @@ class FromsoftGenerator(Client):
     @app_commands.command(
         name="fromsoft", description="Verb a noun in Elden Ring style"
     )
+    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @app_commands.describe(
         text="The text to render",
         hidden="Whisper the response so nobody else sees it.",
