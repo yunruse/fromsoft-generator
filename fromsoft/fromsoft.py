@@ -3,11 +3,6 @@ from ._gradient import Gradient
 
 IMG_SIZE = (1920, 300)
 COLOR = (255, 208, 66)
-try:
-    FONT_S = ImageFont.truetype("agmena.ttf", 96)
-    FONT_L = ImageFont.truetype("agmena.ttf", 104)
-except OSError:
-    raise FileNotFoundError("Font `agmena.tff` could not be found!") from None
 
 TRANSPARENT = (0, 0, 0, 0)
 SHADOW_BAR = Gradient.from_hex(["0000", "000a", "000a", "000a", "0000"])
@@ -29,7 +24,7 @@ GRADIENTS = {
 }
 
 
-def centre_text(
+def _centre_text(
     img: Image.Image,
     text: str,
     font,
@@ -44,10 +39,19 @@ def centre_text(
     return cvs
 
 
-def fromsoft_image(text: str, col: str | Gradient) -> Image.Image:
+def fromsoft_banner(
+    text: str, col: str | Gradient, font_path: str = "agmena.ttf"
+) -> Image.Image:
     "Generate a wide text banner in the style of a FROMSOFT game."
+
+    try:
+        font_text = ImageFont.truetype(font_path, 104)
+        font_shadow = ImageFont.truetype(font_path, 96)
+    except OSError:
+        raise FileNotFoundError(f"Could not find a font {font_path!r}") from None
+
     w, h = IMG_SIZE
-    text_width = FONT_L.getbbox(text)[2]
+    text_width = font_text.getbbox(text)[2]
     w = max(w, int(text_width) + 20)
 
     img = Image.new("RGBA", (w, h), TRANSPARENT)
@@ -57,14 +61,13 @@ def fromsoft_image(text: str, col: str | Gradient) -> Image.Image:
 
     x_mid = img.width // 2
     y_mid = img.height // 2
-    _, _, w, _ = ImageDraw.Draw(img).textbbox((0, 0), text, font=FONT_L)
+    _, _, w, _ = ImageDraw.Draw(img).textbbox((0, 0), text, font=font_text)
 
     BAR_HEIGHT = 100
     SHADOW_BAR.draw_vertical(img, y_mid - BAR_HEIGHT, y_mid + BAR_HEIGHT)
 
-    # TODO: gradient
-    txt_l = centre_text(img, text, FONT_L, (*COLOR, 80))
-    txt_s = centre_text(img, text, FONT_S, (*COLOR, 255))
+    txt_l = _centre_text(img, text, font_text, (*COLOR, 80))
+    txt_s = _centre_text(img, text, font_shadow, (*COLOR, 255))
 
     if isinstance(col, Gradient):
         fill = Image.new("RGBA", img.size)

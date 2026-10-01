@@ -6,7 +6,7 @@ from discord import Client, Intents
 from discord import Interaction
 from discord import app_commands, File
 
-from .fromsoft import fromsoft_image, GRADIENTS
+from .fromsoft import fromsoft_banner, GRADIENTS
 
 CLIENT_KEY = Path("discord.keys").read_text().strip()
 
@@ -47,7 +47,7 @@ class FromsoftGenerator(Client):
     ):
         if all_caps:
             text = text.upper()
-        img = fromsoft_image(text, GRADIENTS.get(color, color))
+        img = fromsoft_banner(text, GRADIENTS.get(color, color))
         with BytesIO() as buffer:
             img.save(buffer, "PNG")
             buffer.seek(0)

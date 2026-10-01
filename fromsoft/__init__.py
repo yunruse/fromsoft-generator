@@ -1,3 +1,3 @@
-from .fromsoft import fromsoft_image
+from .fromsoft import fromsoft_banner, GRADIENTS
 
-__all__ = ["fromsoft_image"]
+__all__ = ["fromsoft_banner", "GRADIENTS"]
