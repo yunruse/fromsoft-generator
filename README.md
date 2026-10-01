@@ -16,5 +16,6 @@ A simple generator to let you generate Elden Ring-style **NOUN VERBED** text.
 
 For a Discord bot with a similar interface to the CLI:
 
+- Install dependencies as `uv sync --group discord`
 - [Set up a Discord bot](https://discord.com/developers/applications) and put the keys in the file `discord.keys`
 - Run as `uv run bot`
