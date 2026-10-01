@@ -1,4 +1,5 @@
 from argparse import ArgumentParser
+from posixpath import expanduser
 
 from .fromsoft import GRADIENTS, fromsoft_banner
 
@@ -40,7 +41,7 @@ def main():
         args.color = GRADIENTS[args.color]
 
     img = fromsoft_banner(text, col=args.color, font_path=args.font)
-    img.save(args.out)
+    img.save(expanduser(args.out))
 
 
 if __name__ == "__main__":

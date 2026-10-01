@@ -1,3 +1,5 @@
+from posixpath import expanduser
+
 from PIL import Image, ImageDraw, ImageFont
 from ._gradient import Gradient
 
@@ -45,8 +47,8 @@ def fromsoft_banner(
     "Generate a wide text banner in the style of a FROMSOFT game."
 
     try:
-        font_text = ImageFont.truetype(font_path, 104)
-        font_shadow = ImageFont.truetype(font_path, 96)
+        font_text = ImageFont.truetype(expanduser(font_path), 104)
+        font_shadow = ImageFont.truetype(expanduser(font_path), 96)
     except OSError:
         raise FileNotFoundError(f"Could not find a font {font_path!r}") from None
 
