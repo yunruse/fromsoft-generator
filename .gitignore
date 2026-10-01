@@ -5,6 +5,9 @@ __pycache__
 uv.lock
 *.egg-info
 
+.env
+dist/
+
 discord.keys
 agmena.ttf
 output.png

@@ -14,5 +14,5 @@ discord = ["discord-py>=2.7.1"]
 package = true
 
 [project.scripts]
-fromsoft = "fromsoft.__main__:main"
-bot = "fromsoft.bot:main"
+fromsoft-generator = "fromsoft.__main__:main"
+fromsoft-generator-discord-bot = "fromsoft.bot:main"
