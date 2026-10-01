@@ -39,22 +39,13 @@ class Gradient(list[tuple[float, Color]]):
 
     def draw_vertical(
         self,
-        img: Image.Image = None,
-        y0: int = 0,
-        y1: int = None,
+        img: Image.Image,
+        y0: int,
+        y1: int,
         x0: int = 0,
-        x1: int = None,
+        x1: int | None = None,
     ):
-        """
-        Draw the gradient vertically from y0 to y1.
-
-        Modifies an image in place - unless no image is provided,
-        in which case a new image is returned.
-        """
-        if img is None:
-            img = Image.new("RGBA", (x1, y1))
-        if y1 is None:
-            y1 = img.height
+        "Draw the gradient vertically from y0 to y1."
         if x1 is None:
             x1 = img.width
 
@@ -66,22 +57,13 @@ class Gradient(list[tuple[float, Color]]):
 
     def draw_horizontal(
         self,
-        img: Image.Image = None,
-        x0: int = 0,
-        x1: int = None,
+        img: Image.Image,
+        x0: int,
+        x1: int,
         y0: int = 0,
-        y1: int = None,
+        y1: int | None = None,
     ):
-        """
-        Draw the gradient horizontally from x0 to x1.
-
-        Modifies an image in place - unless no image is provided,
-        in which case a new image is returned.
-        """
-        if img is None:
-            img = Image.new("RGBA", (x1, y1))
-        if x1 is None:
-            x1 = img.width
+        "Draw the gradient horizontally from x0 to x1."
         if y1 is None:
             y1 = img.height
 

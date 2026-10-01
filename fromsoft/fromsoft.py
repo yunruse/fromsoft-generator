@@ -44,7 +44,8 @@ def centre_text(
     return cvs
 
 
-def generate(text: str, col: str | Gradient) -> Image.Image:
+def fromsoft_image(text: str, col: str | Gradient) -> Image.Image:
+    "Generate a wide text banner in the style of a FROMSOFT game."
     w, h = IMG_SIZE
     text_width = FONT_L.getbbox(text)[2]
     w = max(w, int(text_width) + 20)

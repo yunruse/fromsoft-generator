@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 
-from .fromsoft import GRADIENTS, generate
+from .fromsoft import GRADIENTS, fromsoft_image
 
 parser = ArgumentParser()
 parser.add_argument("text", nargs="*")
@@ -26,8 +26,9 @@ def main():
     if args.color in GRADIENTS:
         args.color = GRADIENTS[args.color]
 
-    img = generate(text, args.color)
+    img = fromsoft_image(text, args.color)
     img.save("output.png")
+
 
 if __name__ == "__main__":
     main()
