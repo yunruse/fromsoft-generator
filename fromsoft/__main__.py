@@ -18,8 +18,9 @@ parser.add_argument(
 )
 parser.add_argument(
     "--font",
-    default="agmena.ttf",
-    help="Path to the font to use.",
+    "-f",
+    default="./agmena.ttf",
+    help="Path to the font to use. Defaults to ./agmena.ttf!",
 )
 parser.add_argument(
     "--out",
