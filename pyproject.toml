@@ -1,6 +1,6 @@
 [project]
 name = "fromsoft-generator"
-version = "1.0.1"
+version = "1.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -14,5 +14,12 @@ discord = ["discord-py>=2.7.1"]
 package = true
 
 [project.scripts]
-fromsoft-generator = "fromsoft.__main__:main"
-fromsoft-generator-discord-bot = "fromsoft.bot:main"
+fromsoft-generator = "fromsoft_generator.__main__:main"
+fromsoft-generator-discord-bot = "fromsoft_generator.bot:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+source-include = ["src/fromsoft_generator/colors.tsv"]

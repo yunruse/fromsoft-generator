@@ -6,7 +6,7 @@ from discord import Client, Intents
 from discord import Interaction
 from discord import app_commands, File
 
-from .fromsoft import fromsoft_banner, GRADIENTS
+from . import fromsoft_banner, MAPPING, GRADIENTS
 
 CLIENT_KEY = Path("discord.keys").read_text().strip()
 
@@ -33,7 +33,7 @@ class FromsoftGenerator(Client):
     @app_commands.describe(
         text="The text to render",
         hidden="Whisper the response so nobody else sees it.",
-        color="One or more hex codes, or a named gradient: "
+        color="A hex code, CSS colour, or a named gradient: "
         + ", ".join(GRADIENTS.keys()),
         all_caps="Automatically capitalise all text?",
     )
@@ -47,7 +47,7 @@ class FromsoftGenerator(Client):
     ):
         if all_caps:
             text = text.upper()
-        img = fromsoft_banner(text, GRADIENTS.get(color, color))
+        img = fromsoft_banner(text, MAPPING.get(color, color))
         with BytesIO() as buffer:
             img.save(buffer, "PNG")
             buffer.seek(0)

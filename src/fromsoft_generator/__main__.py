@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from posixpath import expanduser
 
-from .fromsoft import GRADIENTS, fromsoft_banner
+from . import GRADIENTS, MAPPING, fromsoft_banner
 
 parser = ArgumentParser()
 parser.add_argument("text", nargs="*")
@@ -9,7 +9,7 @@ parser.add_argument(
     "--color",
     "-c",
     default="#ffd042",
-    help="A color, or one of: " + ", ".join(GRADIENTS.keys()),
+    help="A hex code, CSS colour, or one of: " + ", ".join(GRADIENTS.keys()),
 )
 parser.add_argument(
     "--no-caps",
@@ -37,8 +37,8 @@ def main():
     if args.caps:
         text = text.upper()
 
-    if args.color in GRADIENTS:
-        args.color = GRADIENTS[args.color]
+    if args.color in MAPPING:
+        args.color = MAPPING[args.color]
 
     img = fromsoft_banner(text, col=args.color, font_path=args.font)
     img.save(expanduser(args.out))
